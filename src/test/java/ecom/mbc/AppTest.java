@@ -9,6 +9,9 @@ import java.sql.ResultSet;
 
 import org.junit.Test;
 
+import ecom.mbc.mybatis.StudentDao;
+import ecom.mbc.pojo.Student;
+
 /**
  * Unit test for simple App.
  */
@@ -21,6 +24,35 @@ public class AppTest {
         jdbcTest();
     }
 
+    @Test
+    public void staticTest() {
+        // StaticTest.staticMethod();
+        // StaticTest staticTest = new StaticTest();
+        try {
+            Class.forName("ecom.mbc.StaticTest");
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void mybatisTest() {
+
+        StudentDao studentDao = new StudentDao();
+        Student student = new Student(3, "zhongfu", 10000D);
+        try {
+            studentDao.add(student);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
+     * A test method of jdbc.
+     */
     public void jdbcTest() {
         Connection connection = null;
         PreparedStatement prepareStatement = null;

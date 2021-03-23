@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="ecom.mbc.pojo.Student">
-	<insert id="add" parameterType="ecom.mbc.pojo.Student">
+<mapper namespace="ecom.mbc.mappers.StudentMapper">
+	<insert id="insertByStudentEntity" parameterType="student">
 		insert into students (id, name, sal) values (#{id},#{name},#{sal});
 	</insert>
+	<select id="findStudentByColumn" resultType="student">
+		select * from students where ${column} = #{value};
+	</select>
+	<select id="findStudentById" parameterType="int" resultType="student">
+		select id, name, sal from students where id = #{id};
+	</select>
 </mapper>

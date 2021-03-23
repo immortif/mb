@@ -9,7 +9,10 @@ public class Student {
     private String name;
     private Double sal;
 
-    public Student(Integer id, String name, Double sal) {
+    public Student() {
+    }
+
+    public Student(int id, String name, double sal) {
         this.id = id;
         this.name = name;
         this.sal = sal;

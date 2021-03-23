@@ -4,6 +4,9 @@
 <configuration>
 
     <properties resource="db.properties" />
+    <typeAliases>
+        <package name="ecom.mbc.pojo" />
+    </typeAliases>
 
     <environments default="mysql_developer">
         <environment id="mysql_developer">

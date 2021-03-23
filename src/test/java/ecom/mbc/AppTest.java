@@ -7,9 +7,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
-import ecom.mbc.mybatis.StudentDao;
+import ecom.mbc.mappers.StudentMapper;
+import ecom.mbc.mybatis.util.MybatisUtil;
 import ecom.mbc.pojo.Student;
 
 /**
@@ -38,16 +40,15 @@ public class AppTest {
 
     @Test
     public void mybatisTest() {
+        SqlSession sqlSession = MybatisUtil.getSqlSession();
+        StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+        // studentMapper.insertByStudentEntity(new Student(5, "mbc", 5000D));
+        // sqlSession.commit();
+        // System.out.println("Insert student data SUCCESS!");
 
-        StudentDao studentDao = new StudentDao();
-        Student student = new Student(3, "zhongfu", 10000D);
-        try {
-            studentDao.add(student);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
+        // Student student = studentMapper.findStudentById(1);
+        Student student = studentMapper.findStudentByColumn("name", "mbc");
+        System.out.println(student.getId() + " " + student.getName() + " " + student.getSal());
     }
 
     /**
